@@ -32,18 +32,21 @@ public class MainActivity extends AppCompatActivity implements ValueEventListene
         DatabaseReference ref;
         ref = mRef.push();
         mKeys.add(ref.getKey());
-        ref.setValue(Long.parseLong("1")); // The point here is that the database thinks
-        // that anything other than an int is a string and orders the keys lexicographically :(
+        ref.setValue(1);
 
         ref = mRef.push();
         mKeys.add(ref.getKey());
-        ref.setValue(Long.parseLong("1"));
+        ref.setValue(1);
 
         ref = mRef.push();
         mKeys.add(ref.getKey());
-        ref.setValue(Long.parseLong("1"));
+        ref.setValue(1);
 
-        mRef.push().setValue(Long.parseLong("2")); // Just to show that my data has other numbers like so
+        ref = mRef.push();
+        mKeys.add(ref.getKey());
+        ref.setValue(1);
+
+        mRef.push().setValue(2); // Just to show that my data has other numbers like so
 
         mRef.orderByValue().equalTo(1).addValueEventListener(this);
     }
