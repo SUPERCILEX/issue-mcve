@@ -10,25 +10,42 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements ValueEventListener {
     private static FirebaseDatabase sDatabase;
-    private DatabaseReference mRef;
+    private DatabaseReference mRef = getDatabase().push();
+    private List<String> mKeys = new ArrayList<>();
+
+    private static DatabaseReference getDatabase() {
+        if (sDatabase == null) {
+            sDatabase = FirebaseDatabase.getInstance();
+        }
+        return sDatabase.getReference();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mRef = getDatabase();
-        mRef.push().setValue(1);
-        mRef.push().setValue(1);
-        mRef.push().setValue(1);
-        mRef.push().setValue(1);
-        mRef.push().setValue(1);
-        mRef.push().setValue(2);
-        mRef.push().setValue(2);
-        mRef.push().setValue(2);
-        mRef.push().setValue(2);
-        mRef.addValueEventListener(this);
+        DatabaseReference ref;
+        ref = mRef.push();
+        mKeys.add(ref.getKey());
+        ref.setValue(Long.parseLong("1")); // The point here is that the database thinks
+        // that anything other than an int is a string and orders the keys lexicographically :(
+
+        ref = mRef.push();
+        mKeys.add(ref.getKey());
+        ref.setValue(Long.parseLong("1"));
+
+        ref = mRef.push();
+        mKeys.add(ref.getKey());
+        ref.setValue(Long.parseLong("1"));
+
+        mRef.push().setValue(Long.parseLong("2")); // Just to show that my data has other numbers like so
+
+        mRef.orderByValue().equalTo(1).addValueEventListener(this);
     }
 
     @Override
@@ -40,19 +57,17 @@ public class MainActivity extends AppCompatActivity implements ValueEventListene
     @Override
     public void onDataChange(DataSnapshot snapshot) {
         if (snapshot != null) {
-            ((TextView) findViewById(R.id.text)).setText("success:\n" + snapshot);
+            ((TextView) findViewById(R.id.text)).setText(
+                    "success:\n\n"
+                            + "correct order:\n"
+                            + mKeys
+                            + "\n\nactual order:\n"
+                            + snapshot.getValue());
         }
     }
 
     @Override
     public void onCancelled(DatabaseError error) {
         ((TextView) findViewById(R.id.text)).setText(error.getMessage());
-    }
-
-    private static DatabaseReference getDatabase() {
-        if (sDatabase == null) {
-            sDatabase = FirebaseDatabase.getInstance();
-        }
-        return sDatabase.getReference();
     }
 }
