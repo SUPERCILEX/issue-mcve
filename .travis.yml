@@ -9,8 +9,8 @@ cache:
     - $HOME/.gradle/wrapper/
 android:
   components:
-    - android-25
     - tools
+    - android-25
     - platform-tools
     - build-tools-25.0.1
     - extra-android-m2repository
