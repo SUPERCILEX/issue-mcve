@@ -11,8 +11,8 @@ android:
   components:
     - android-25
     - tools
-    - build-tools-25.0.1
     - platform-tools
+    - build-tools-25.0.1
     - extra-android-m2repository
     - extra-google-m2repository
 before_script: chmod +x gradlew
