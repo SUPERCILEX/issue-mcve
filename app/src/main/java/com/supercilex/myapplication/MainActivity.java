@@ -8,19 +8,20 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements ValueEventListener {
     private static FirebaseDatabase sDatabase;
-    private DatabaseReference mRef = getDatabase().push();
-    private List<String> mKeys = new ArrayList<>();
+    private DatabaseReference mRef = getDatabase().child("x");
 
     private static DatabaseReference getDatabase() {
         if (sDatabase == null) {
             sDatabase = FirebaseDatabase.getInstance();
+            sDatabase.setPersistenceEnabled(true);
         }
         return sDatabase.getReference();
     }
@@ -29,26 +30,20 @@ public class MainActivity extends AppCompatActivity implements ValueEventListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DatabaseReference ref;
-        ref = mRef.push();
-        mKeys.add(ref.getKey());
-        ref.setValue(1);
 
-        ref = mRef.push();
-        mKeys.add(ref.getKey());
-        ref.setValue(1);
+        Map<String, Long> values = new HashMap<>();
+        values.put(mRef.push().getKey(), 2521L);
+        values.put(mRef.push().getKey(), 2521L);
+        values.put(mRef.push().getKey(), 2521L);
 
-        ref = mRef.push();
-        mKeys.add(ref.getKey());
-        ref.setValue(1);
+        mRef.push().setValue(values);
+        mRef.push().setValue(values);
+        mRef.push().setValue(values);
 
-        ref = mRef.push();
-        mKeys.add(ref.getKey());
-        ref.setValue(1);
+        Query ref = mRef.push();
+        ref.getRef().setValue(values);
 
-        mRef.push().setValue(2); // Just to show that my data has other numbers like so
-
-        mRef.orderByValue().equalTo(1).addValueEventListener(this);
+        mRef.child(ref.getRef().getKey()).addValueEventListener(this);
     }
 
     @Override
@@ -60,12 +55,7 @@ public class MainActivity extends AppCompatActivity implements ValueEventListene
     @Override
     public void onDataChange(DataSnapshot snapshot) {
         if (snapshot != null) {
-            ((TextView) findViewById(R.id.text)).setText(
-                    "success:\n\n"
-                            + "correct order:\n"
-                            + mKeys
-                            + "\n\nactual order:\n"
-                            + snapshot.getValue());
+            ((TextView) findViewById(R.id.text)).setText("success:\n\n" + snapshot.getValue());
         }
     }
 
