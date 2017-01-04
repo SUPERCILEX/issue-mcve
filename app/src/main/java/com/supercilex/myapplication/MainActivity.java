@@ -2,21 +2,19 @@ package com.supercilex.myapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class MainActivity extends AppCompatActivity implements ValueEventListener {
+public class MainActivity extends AppCompatActivity implements ValueEventListener, ChildEventListener {
     private static FirebaseDatabase sDatabase;
-    private DatabaseReference mRef = getDatabase().child("x");
+    private DatabaseReference mRef = getDatabase().push();
 
     private static DatabaseReference getDatabase() {
         if (sDatabase == null) {
@@ -31,32 +29,44 @@ public class MainActivity extends AppCompatActivity implements ValueEventListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Map<String, Long> values = new HashMap<>();
-        values.put(mRef.push().getKey(), 2521L);
-        values.put(mRef.push().getKey(), 2521L);
-        values.put(mRef.push().getKey(), 2521L);
+        // 1. Open the app while online and notice that two log statements are printed
+        // 2. Go offline and rotate the activity, only the CHILD_EVENT is logged
 
-        mRef.push().setValue(values);
-        mRef.push().setValue(values);
-        mRef.push().setValue(values);
+        mRef.push().setValue(1);
+        mRef.push().setValue(2);
 
-        Query ref = mRef.push();
-        ref.getRef().setValue(values);
-
-        mRef.child(ref.getRef().getKey()).addValueEventListener(this);
+        // Using a query doesn't cache the whole ref for some reason
+        mRef.orderByValue().equalTo(1).addValueEventListener(this);
+        mRef.orderByValue().equalTo(1).addChildEventListener(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mRef.removeEventListener(this);
+        mRef.removeEventListener((ValueEventListener) this);
+        mRef.removeEventListener((ChildEventListener) this);
     }
 
     @Override
     public void onDataChange(DataSnapshot snapshot) {
-        if (snapshot != null) {
-            ((TextView) findViewById(R.id.text)).setText("success:\n\n" + snapshot.getValue());
-        }
+        Log.d("VALUE_EVENT", snapshot.toString());
+    }
+
+    @Override
+    public void onChildAdded(DataSnapshot snapshot, String s) {
+        Log.d("CHILD_EVENT", snapshot.toString());
+    }
+
+    @Override
+    public void onChildChanged(DataSnapshot snapshot, String s) {
+    }
+
+    @Override
+    public void onChildRemoved(DataSnapshot snapshot) {
+    }
+
+    @Override
+    public void onChildMoved(DataSnapshot snapshot, String s) {
     }
 
     @Override
