@@ -28,6 +28,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     implementation 'com.android.support:design:27.0.2'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta5'
+    implementation "org.jetbrains.anko:anko-design:$ankoVersion"
+    implementation "org.jetbrains.anko:anko-appcompat-v7-commons:$ankoVersion"
 
     implementation "com.google.firebase:firebase-firestore:$firebaseVersion"
     implementation "com.google.firebase:firebase-auth:$firebaseVersion"
