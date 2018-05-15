@@ -4,6 +4,7 @@
     package="com.supercilex.test">
 
     <application
+        android:name="android.support.multidex.MultiDexApplication"
         android:label="@string/app_name"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"

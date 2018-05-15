@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 27
@@ -9,6 +11,7 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -18,22 +21,32 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
+androidExtensions {
+    experimental true
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation "org.jetbrains.anko:anko-design:$ankoVersion"
     implementation "org.jetbrains.anko:anko-appcompat-v7-commons:$ankoVersion"
+    implementation "android.arch.work:work-runtime-ktx:1.0.0-alpha01"
 
-    implementation "com.google.firebase:firebase-firestore:$firebaseVersion"
-    implementation "com.google.firebase:firebase-auth:$firebaseVersion"
-    implementation "com.google.android.gms:play-services-auth:$firebaseVersion"
+    implementation "com.google.firebase:firebase-firestore:16.0.0"
+    implementation "com.google.firebase:firebase-auth:15.1.0"
+    implementation "com.google.android.gms:play-services-auth:15.0.0"
 }
 
 apply plugin: 'com.google.gms.google-services'
