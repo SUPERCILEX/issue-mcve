@@ -16,7 +16,7 @@ android {
         minSdkVersion(Config.SdkVersions.min)
         targetSdkVersion(Config.SdkVersions.target)
         versionCode = 3
-        versionName = "1.0"
+        versionName = "1.0.0"
         multiDexEnabled = true
     }
 
@@ -59,6 +59,7 @@ androidExtensions {
 play {
     track = "internal"
     resolutionStrategy = "auto"
+    versionNameOverride = { "${android.defaultConfig.versionName}.$it" }
     jsonFile = file("google-play-auto-publisher.json")
 }
 
