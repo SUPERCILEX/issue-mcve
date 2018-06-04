@@ -58,6 +58,7 @@ androidExtensions {
 
 play {
     track = "internal"
+    resolutionStrategy = "auto"
     jsonFile = file("google-play-auto-publisher.json")
 }
 
