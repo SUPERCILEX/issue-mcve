@@ -11,7 +11,7 @@ object Config {
         const val android = "com.android.tools.build:gradle:3.2.0-alpha16"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         const val google = "com.google.gms:google-services:4.0.1"
-        const val publishing = "com.github.Triple-T:gradle-play-publisher:591a1138a5"
+        const val publishing = "com.github.Triple-T:gradle-play-publisher:3064b6163a"
     }
 
     object Libs {
