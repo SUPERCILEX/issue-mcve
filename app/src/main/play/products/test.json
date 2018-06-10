@@ -1,0 +1,23 @@
+{
+  "defaultLanguage" : "en-US",
+  "defaultPrice" : {
+    "currency" : "USD",
+    "priceMicros" : "1000000"
+  },
+  "listings" : {
+    "en-US" : {
+      "description" : "My test product",
+      "title" : "Test"
+    }
+  },
+  "packageName" : "com.supercilex.test",
+  "prices" : {
+    "US" : {
+      "currency" : "USD",
+      "priceMicros" : "990000"
+    }
+  },
+  "purchaseType" : "managedUser",
+  "sku" : "test",
+  "status" : "active"
+}

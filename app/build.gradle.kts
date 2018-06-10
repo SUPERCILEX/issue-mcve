@@ -15,7 +15,7 @@ android {
         applicationId = "com.supercilex.test"
         minSdkVersion(Config.SdkVersions.min)
         targetSdkVersion(Config.SdkVersions.target)
-        versionCode = 3
+        versionCode = 1 // Updated on every build
         versionName = "1.0.0"
         multiDexEnabled = true
     }
@@ -57,10 +57,10 @@ androidExtensions {
 }
 
 play {
-    track = "internal"
+    serviceAccountCredentials = file("google-play-auto-publisher.json")
     resolutionStrategy = "auto"
-    versionNameOverride = { "${android.defaultConfig.versionName}.$it" }
-    jsonFile = file("google-play-auto-publisher.json")
+    outputProcessor = { versionNameOverride = "$versionNameOverride.$versionCode" }
+    defaultToAppBundles = true
 }
 
 dependencies {
