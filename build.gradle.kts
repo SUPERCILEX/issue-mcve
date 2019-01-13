@@ -15,6 +15,10 @@ buildscript {
     }
 }
 
+plugins {
+    id("com.github.ben-manes.versions") version "0.20.0"
+}
+
 allprojects {
     repositories {
         google()
@@ -22,6 +26,6 @@ allprojects {
     }
 }
 
-tasks.withType<Wrapper>().configureEach {
+tasks.wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }

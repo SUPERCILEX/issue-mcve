@@ -47,8 +47,8 @@ android {
     }
 
     compileOptions {
-        setSourceCompatibility(JavaVersion.VERSION_1_8)
-        setTargetCompatibility(JavaVersion.VERSION_1_8)
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
 
@@ -59,7 +59,7 @@ androidExtensions {
 play {
     serviceAccountCredentials = file("google-play-auto-publisher.json")
     resolutionStrategy = "auto"
-    outputProcessor = { versionNameOverride = "$versionNameOverride.$versionCode" }
+    outputProcessor { versionNameOverride = "$versionNameOverride.$versionCode" }
     defaultToAppBundles = true
 }
 
