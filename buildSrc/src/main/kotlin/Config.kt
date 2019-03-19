@@ -17,7 +17,23 @@ object Config {
 
     object Libs {
         object Kotlin {
+            private val coroutinesVersion = "1.1.1"
+
             val jvm = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+
+            val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+            val coroutinesTasks =
+                    "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion"
+        }
+
+        object Jetpack {
+            val multidex = "androidx.multidex:multidex:2.0.1"
+            val design = "androidx.appcompat:appcompat:1.0.2"
+            val constraint = "androidx.constraintlayout:constraintlayout:1.1.3"
+        }
+
+        object Firebase {
+            val core = "com.google.firebase:firebase-analytics:16.4.0"
         }
 
         object Anko {
@@ -25,12 +41,6 @@ object Config {
 
             val appCompat = "org.jetbrains.anko:anko-appcompat-v7-commons:$version"
             val design = "org.jetbrains.anko:anko-design:$version"
-        }
-
-        object Support {
-            val multidex = "androidx.multidex:multidex:2.0.1"
-            val design = "androidx.appcompat:appcompat:1.0.2"
-            val constraint = "androidx.constraintlayout:constraintlayout:1.1.3"
         }
     }
 }

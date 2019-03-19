@@ -65,9 +65,12 @@ play {
 
 dependencies {
     implementation(Config.Libs.Kotlin.jvm)
-    implementation(Config.Libs.Support.multidex)
-    implementation(Config.Libs.Support.design)
-    implementation(Config.Libs.Support.constraint)
+    implementation(Config.Libs.Kotlin.coroutines)
+    implementation(Config.Libs.Kotlin.coroutinesTasks)
+    implementation(Config.Libs.Jetpack.multidex)
+    implementation(Config.Libs.Jetpack.design)
+    implementation(Config.Libs.Jetpack.constraint)
+    implementation(Config.Libs.Firebase.core)
     implementation(Config.Libs.Anko.design)
     implementation(Config.Libs.Anko.appCompat)
 }
