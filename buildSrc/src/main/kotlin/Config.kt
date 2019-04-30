@@ -1,6 +1,6 @@
 @Suppress("MayBeConstant")
 object Config {
-    private const val kotlinVersion = "1.3.21"
+    private const val kotlinVersion = "1.3.31"
 
     object SdkVersions {
         val compile = 28
@@ -9,15 +9,15 @@ object Config {
     }
 
     object Plugins {
-        val android = "com.android.tools.build:gradle:3.5.0-alpha06"
+        val android = "com.android.tools.build:gradle:3.5.0-alpha13"
         val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         val google = "com.google.gms:google-services:4.2.0"
-        val publishing = "com.github.triplet.gradle:play-publisher:2.1.1"
+        val publishing = "com.github.triplet.gradle:play-publisher:2.2.0"
     }
 
     object Libs {
         object Kotlin {
-            private val coroutinesVersion = "1.1.1"
+            private val coroutinesVersion = "1.2.1"
 
             val jvm = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 
