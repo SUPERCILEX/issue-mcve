@@ -16,7 +16,15 @@ buildscript {
 }
 
 plugins {
+    `build-scan`
     id("com.github.ben-manes.versions") version "0.21.0"
+}
+
+buildScan {
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
+
+    publishAlways()
 }
 
 allprojects {
