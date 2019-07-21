@@ -20,4 +20,4 @@ android:
     - tools
     - tools
 before_script: chmod +x gradlew
-script: ./gradlew clean build publish
+script: ./gradlew clean build publish --stacktrace

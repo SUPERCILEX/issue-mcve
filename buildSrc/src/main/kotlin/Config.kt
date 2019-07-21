@@ -9,10 +9,10 @@ object Config {
     }
 
     object Plugins {
-        val android = "com.android.tools.build:gradle:3.6.0-alpha04"
+        val android = "com.android.tools.build:gradle:3.6.0-alpha05"
         val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         val google = "com.google.gms:google-services:4.3.0"
-        val publishing = "com.github.triplet.gradle:play-publisher:2.2.1"
+        val publishing = "com.github.triplet.gradle:play-publisher:2.3.0"
     }
 
     object Libs {
@@ -33,7 +33,7 @@ object Config {
         }
 
         object Firebase {
-            val core = "com.google.firebase:firebase-analytics:17.0.0"
+            val core = "com.google.firebase:firebase-analytics:17.0.1"
         }
 
         object Anko {
