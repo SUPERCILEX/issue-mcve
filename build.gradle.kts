@@ -3,8 +3,8 @@ buildscript {
         mavenLocal()
         google()
         jcenter()
-        maven { url = uri("https://jitpack.io") }
         maven { url = uri("https://plugins.gradle.org/m2/") }
+        maven("https://oss.sonatype.org/content/repositories/snapshots")
     }
 
     dependencies {

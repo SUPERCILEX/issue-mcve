@@ -12,7 +12,7 @@ object Config {
         val android = "com.android.tools.build:gradle:3.6.0-alpha05"
         val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         val google = "com.google.gms:google-services:4.3.0"
-        val publishing = "com.github.triplet.gradle:play-publisher:2.3.0"
+        val publishing = "com.github.triplet.gradle:play-publisher:2.4.0-SNAPSHOT"
     }
 
     object Libs {
