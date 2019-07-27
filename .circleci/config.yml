@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/issue-mcve
+    docker:
+      - image: circleci/android:api-29
+    steps:
+      - checkout
+      - restore_cache:
+          key: static
+      - run:
+          name: Install licenses
+          command: |
+            mkdir "$ANDROID_HOME/licenses" || true
+            echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55\n24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
+            echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd\n504667f4c0de7af1a06de9f4b1727b84351f2910" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+      - run:
+          name: Build
+          command: ./gradlew clean build publish --stacktrace
+      - save_cache:
+          key: static
+          paths:
+            - ~/.gradle
