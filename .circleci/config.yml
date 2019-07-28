@@ -21,7 +21,7 @@ jobs:
           command: chmod +x gradlew
       - run:
           name: Build
-          command: ./gradlew clean build publish --stacktrace
+          command: ./gradlew clean build publish promoteArtifact --stacktrace
       - save_cache:
           key: cache-{{ .Environment.CACHE_CODE }}
           paths:

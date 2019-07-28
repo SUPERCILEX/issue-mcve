@@ -58,6 +58,7 @@ androidExtensions {
 
 play {
     serviceAccountCredentials = file("google-play-auto-publisher.json")
+    promoteTrack = "alpha"
     resolutionStrategy = "auto"
     outputProcessor { versionNameOverride = "$versionNameOverride.$versionCode" }
     defaultToAppBundles = true
