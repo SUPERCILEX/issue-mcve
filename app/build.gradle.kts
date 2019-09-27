@@ -46,14 +46,14 @@ android {
         isAbortOnError = false
     }
 
+    viewBinding {
+        isEnabled = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-}
-
-androidExtensions {
-    isExperimental = true
 }
 
 play {
