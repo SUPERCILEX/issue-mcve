@@ -46,8 +46,8 @@ android {
         isAbortOnError = false
     }
 
-    viewBinding {
-        isEnabled = true
+    buildFeatures {
+        viewBinding = true
     }
 
     compileOptions {
@@ -72,8 +72,6 @@ dependencies {
     implementation(Config.Libs.Jetpack.design)
     implementation(Config.Libs.Jetpack.constraint)
     implementation(Config.Libs.Firebase.core)
-    implementation(Config.Libs.Anko.design)
-    implementation(Config.Libs.Anko.appCompat)
 }
 
 apply(plugin = "com.google.gms.google-services")
