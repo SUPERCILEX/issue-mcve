@@ -10,6 +10,7 @@ buildscript {
     dependencies {
         classpath(Config.Plugins.android)
         classpath(Config.Plugins.kotlin)
+        classpath(Config.Plugins.navArgs)
         classpath(Config.Plugins.google)
         classpath(Config.Plugins.publishing)
     }
