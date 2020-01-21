@@ -37,7 +37,7 @@ object Config {
         }
 
         object Firebase {
-            const val core = "com.google.firebase:firebase-analytics:17.2.1"
+            const val core = "com.google.firebase:firebase-analytics:17.2.2"
         }
     }
 }
