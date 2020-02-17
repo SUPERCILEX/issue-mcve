@@ -1,6 +1,6 @@
 object Config {
     private const val kotlinVersion = "1.3.61"
-    private const val navVersion = "2.2.0-rc04"
+    private const val navVersion = "2.3.0-alpha01"
 
     object SdkVersions {
         const val compile = 29
@@ -9,7 +9,7 @@ object Config {
     }
 
     object Plugins {
-        const val android = "com.android.tools.build:gradle:4.0.0-alpha08"
+        const val android = "com.android.tools.build:gradle:4.0.0-alpha09"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         const val navArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion"
         const val google = "com.google.gms:google-services:4.3.3"

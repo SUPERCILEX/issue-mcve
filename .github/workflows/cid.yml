@@ -1,0 +1,35 @@
+name: CI/CD
+
+on: [push, pull_request]
+env:
+  GRADLE_OPTS: -Dorg.gradle.daemon=false -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Gradle Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle
+          key: ${{ runner.os }}-v2-gradle-${{ hashFiles('**/*') }}
+          restore-keys: |
+            ${{ runner.os }}-v2-gradle-
+      - name: Validate Gradle integrity
+        uses: gradle/wrapper-validation-action@v1
+      - name: Build project
+        run: ./gradlew build -S
+      - name: Publish app
+        run: ./gradlew publish promoteArtifact -S
+        if: github.ref == 'refs/heads/master'
+      - name: Upload outputs
+        uses: actions/upload-artifact@v1
+        with:
+          name: outputs
+          path: app/build/outputs/

@@ -17,6 +17,7 @@ buildscript {
 }
 
 plugins {
+    `lifecycle-base`
     id("com.github.ben-manes.versions") version "0.27.0"
 }
 
@@ -36,8 +37,4 @@ allprojects {
 
 tasks.wrapper {
     distributionType = Wrapper.DistributionType.ALL
-}
-
-tasks.register<Delete>("clean") {
-    delete("build")
 }
