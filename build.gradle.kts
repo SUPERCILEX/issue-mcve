@@ -13,6 +13,7 @@ buildscript {
         classpath(Config.Plugins.navArgs)
         classpath(Config.Plugins.google)
         classpath(Config.Plugins.publishing)
+        classpath(Config.Plugins.versioning)
     }
 }
 

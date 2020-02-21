@@ -10,6 +10,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 
     id("com.github.triplet.play")
+    id("com.supercilex.gradle.versions")
 }
 
 android {
@@ -68,8 +69,11 @@ play {
     serviceAccountCredentials = file("google-play-auto-publisher.json")
     promoteTrack = "alpha"
     resolutionStrategy = "auto"
-    outputProcessor { versionNameOverride = "$versionNameOverride.$versionCode" }
     defaultToAppBundles = true
+}
+
+versionMaster {
+    configureVersionCode.set(false)
 }
 
 dependencies {
