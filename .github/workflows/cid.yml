@@ -10,6 +10,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Fetch tags and history
+        run: |
+          git fetch --depth=1 --progress origin +refs/tags/*:refs/tags/*
+          git fetch --prune --unshallow --progress
       - name: Install JDK
         uses: actions/setup-java@v1
         with:
