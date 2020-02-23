@@ -14,7 +14,7 @@ object Config {
         const val navArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion"
         const val google = "com.google.gms:google-services:4.3.3"
         const val publishing = "com.github.triplet.gradle:play-publisher:2.8.0-SNAPSHOT"
-        const val versioning = "com.supercilex.gradle:version-master:0.4.0-SNAPSHOT"
+        const val versioning = "com.supercilex.gradle:version-master:0.5.0-SNAPSHOT"
     }
 
     object Libs {
