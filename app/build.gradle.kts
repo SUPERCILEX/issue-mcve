@@ -22,6 +22,8 @@ android {
         targetSdkVersion(Config.SdkVersions.target)
         versionCode = 1 // Updated on every build
         versionName = "1.0.0"
+
+        base.archivesBaseName = "mcve"
         multiDexEnabled = true
     }
 
