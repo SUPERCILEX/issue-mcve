@@ -19,9 +19,11 @@ jobs:
         with:
           java-version: 11
       - name: Gradle Cache
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
-          path: ~/.gradle
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
           key: ${{ runner.os }}-v2-gradle-${{ hashFiles('**/*') }}
           restore-keys: |
             ${{ runner.os }}-v2-gradle-
@@ -32,8 +34,3 @@ jobs:
       - name: Publish app
         run: ./gradlew publish promoteArtifact -S
         if: github.ref == 'refs/heads/master'
-      - name: Upload outputs
-        uses: actions/upload-artifact@v1
-        with:
-          name: outputs
-          path: app/build/outputs/

@@ -1,3 +1,4 @@
+import com.github.triplet.gradle.androidpublisher.ResolutionStrategy
 import java.io.FileInputStream
 import java.util.Properties
 
@@ -23,7 +24,7 @@ android {
         versionCode = 1 // Updated on every build
         versionName = "1.0.0"
 
-        base.archivesBaseName = "mcve"
+        base.archivesBaseName = "issue-mcve"
         multiDexEnabled = true
     }
 
@@ -68,10 +69,10 @@ android {
 }
 
 play {
-    serviceAccountCredentials = file("google-play-auto-publisher.json")
-    promoteTrack = "alpha"
-    resolutionStrategy = "auto"
-    defaultToAppBundles = true
+    serviceAccountCredentials.set(file("google-play-auto-publisher.json"))
+    promoteTrack.set("alpha")
+    resolutionStrategy.set(ResolutionStrategy.AUTO)
+    defaultToAppBundles.set(true)
 }
 
 versionMaster {
@@ -84,7 +85,7 @@ dependencies {
     implementation(Config.Libs.Kotlin.coroutinesTasks)
 
     implementation(Config.Libs.Jetpack.multidex)
-    implementation(Config.Libs.Jetpack.design)
+    implementation(Config.Libs.Jetpack.appCompat)
     implementation(Config.Libs.Jetpack.constraint)
     implementation(Config.Libs.Jetpack.navFragments)
     implementation(Config.Libs.Jetpack.navUi)
