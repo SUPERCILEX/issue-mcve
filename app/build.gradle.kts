@@ -15,12 +15,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Config.SdkVersions.compile)
+    compileSdkVersion(29)
 
     defaultConfig {
         applicationId = "com.supercilex.test"
-        minSdkVersion(Config.SdkVersions.min)
-        targetSdkVersion(Config.SdkVersions.target)
+        minSdkVersion(16)
+        targetSdkVersion(29)
         versionCode = 1 // Updated on every build
         versionName = "1.0.0"
 
@@ -75,22 +75,24 @@ play {
     defaultToAppBundles.set(true)
 }
 
-versionMaster {
+versionOrchestrator {
     configureVersionCode.set(false)
 }
 
 dependencies {
-    implementation(Config.Libs.Kotlin.jvm)
-    implementation(Config.Libs.Kotlin.coroutines)
-    implementation(Config.Libs.Kotlin.coroutinesTasks)
+    api(platform(project(":dependencies")))
 
-    implementation(Config.Libs.Jetpack.multidex)
-    implementation(Config.Libs.Jetpack.appCompat)
-    implementation(Config.Libs.Jetpack.constraint)
-    implementation(Config.Libs.Jetpack.navFragments)
-    implementation(Config.Libs.Jetpack.navUi)
+    implementation(kotlin("stdlib-jdk8"))
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services")
 
-    implementation(Config.Libs.Firebase.core)
+    implementation("androidx.multidex:multidex")
+    implementation("androidx.appcompat:appcompat")
+    implementation("androidx.constraintlayout:constraintlayout")
+    implementation("androidx.navigation:navigation-fragment-ktx")
+    implementation("androidx.navigation:navigation-ui-ktx")
+
+    implementation("com.google.firebase:firebase-analytics")
 }
 
 apply(plugin = "com.google.gms.google-services")
