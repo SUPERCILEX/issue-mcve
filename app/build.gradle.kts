@@ -15,12 +15,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(29)
+    compileSdkVersion(30)
 
     defaultConfig {
         applicationId = "com.supercilex.test"
         minSdkVersion(16)
-        targetSdkVersion(29)
+        targetSdkVersion(30)
         versionCode = 1 // Updated on every build
         versionName = "1.0.0"
 
@@ -89,6 +89,7 @@ dependencies {
     implementation("androidx.multidex:multidex")
     implementation("androidx.appcompat:appcompat")
     implementation("androidx.constraintlayout:constraintlayout")
+    implementation("androidx.recyclerview:recyclerview")
     implementation("androidx.navigation:navigation-fragment-ktx")
     implementation("androidx.navigation:navigation-ui-ktx")
 
