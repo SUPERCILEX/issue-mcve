@@ -32,5 +32,5 @@ jobs:
       - name: Build project
         run: ./gradlew build -S
       - name: Publish app
-        run: ./gradlew publish promoteArtifact -S
+        run: ./gradlew publishApps promoteArtifact -S
         if: github.ref == 'refs/heads/master'
