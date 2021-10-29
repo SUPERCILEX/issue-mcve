@@ -15,16 +15,16 @@ plugins {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdk = 31
 
     defaultConfig {
         applicationId = "com.supercilex.test"
-        minSdkVersion(16)
-        targetSdkVersion(30)
+        minSdk = 16
+        targetSdk = 31
         versionCode = 1 // Updated on every build
         versionName = "1.0.0"
 
-        base.archivesBaseName = "issue-mcve"
+        base.archivesName.set("issue-mcve")
         multiDexEnabled = true
     }
 
@@ -48,10 +48,6 @@ android {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"))
         }
-    }
-
-    lintOptions {
-        isAbortOnError = false
     }
 
     buildFeatures {
@@ -80,20 +76,18 @@ versionOrchestrator {
 }
 
 dependencies {
-    api(platform(project(":dependencies")))
-
     implementation(kotlin("stdlib-jdk8"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services")
+    implementation(libs.coroutines.android)
+    implementation(libs.coroutines.playServices)
 
-    implementation("androidx.multidex:multidex")
-    implementation("androidx.appcompat:appcompat")
-    implementation("androidx.constraintlayout:constraintlayout")
-    implementation("androidx.recyclerview:recyclerview")
-    implementation("androidx.navigation:navigation-fragment-ktx")
-    implementation("androidx.navigation:navigation-ui-ktx")
+    implementation(libs.multidex)
+    implementation(libs.appcompat)
+    implementation(libs.constraintlayout)
+    implementation(libs.recyclerview)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
 
-    implementation("com.google.firebase:firebase-analytics")
+    implementation(libs.firebase.analytics)
 }
 
 apply(plugin = "com.google.gms.google-services")
